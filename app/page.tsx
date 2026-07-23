@@ -24,8 +24,8 @@ export default async function Home() {
       <Header />
       <main className="flex flex-1 flex-col">
         <Hero mentors={allMentors} summary={summary} />
-        <TrustedBy summary={summary} />
-        <WhyMentorleExists tags={summary.topTags} />
+        <TrustedBy />
+        <WhyMentorleExists />
         <WhoMentorleIsFor />
         <WhatYouCanDoHere />
         <MentorSpotlight

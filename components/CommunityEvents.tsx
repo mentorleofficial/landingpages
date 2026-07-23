@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import MentorAvatar from "./MentorAvatar";
 import type { Mentor, MentorSummary } from "@/lib/mentors";
+import { SOCIAL_LINKS } from "@/lib/social";
 
 const features = [
   {
@@ -208,6 +210,31 @@ export default function CommunityEvents({
                 </span>
               </a>
             ) : null}
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              <a
+                href={SOCIAL_LINKS.discord.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-10 items-center rounded-full border border-border bg-white px-4 text-[0.8125rem] font-medium text-foreground transition-colors hover:border-neutral-400"
+              >
+                Discord
+              </a>
+              <a
+                href={SOCIAL_LINKS.whatsapp.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-10 items-center rounded-full border border-border bg-white px-4 text-[0.8125rem] font-medium text-foreground transition-colors hover:border-neutral-400"
+              >
+                WhatsApp
+              </a>
+              <Link
+                href="/community"
+                className="inline-flex h-10 items-center rounded-full border border-border bg-white px-4 text-[0.8125rem] font-medium text-foreground transition-colors hover:border-neutral-400"
+              >
+                All channels →
+              </Link>
+            </div>
           </div>
 
           <ul className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 sm:gap-4">

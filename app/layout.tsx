@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Inter, Manrope } from "next/font/google";
+import { SOCIAL_SAME_AS } from "@/lib/social";
 import "./globals.css";
 
 const inter = Inter({
@@ -91,6 +92,7 @@ const jsonLd = {
       image: `${siteUrl}/icon.svg`,
       description:
         "Community-led mentorship platform connecting students, founders, and learners with verified mentors.",
+      sameAs: [...SOCIAL_SAME_AS],
       areaServed: {
         "@type": "Place",
         name: "Punjab",

@@ -9,6 +9,11 @@ import {
 const MENTOR_SELECT =
   "user_id, name, email, bio, experience_years, status, role, current_role, profile_url, Industry, expertise_area, location, badge, languages_spoken, past_experience";
 
+function hasProfileImage(row: MentorDataRow) {
+  const url = row.profile_url?.trim();
+  return Boolean(url && /^https?:\/\//i.test(url));
+}
+
 export async function fetchMentors(): Promise<Mentor[]> {
   const supabase = getSupabaseAdmin() ?? getSupabase();
   if (!supabase) {
@@ -36,15 +41,11 @@ export async function fetchMentors(): Promise<Mentor[]> {
   }
 
   const rows = (data ?? []) as MentorDataRow[];
-  const approved = rows.filter((row) => isApprovedMentor(row.status));
-  // Prefer approved mentors; if none are tagged yet, show all non-empty profiles.
-  const source =
-    approved.length > 0
-      ? approved
-      : rows.filter((row) => row.status?.toLowerCase() !== "rejected");
 
-  return source
+  return rows
+    .filter((row) => isApprovedMentor(row.status))
     .filter((row) => Boolean(row.name?.trim() || row.email))
+    .sort((a, b) => Number(hasProfileImage(b)) - Number(hasProfileImage(a)))
     .map(mapMentorRow);
 }
 

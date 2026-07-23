@@ -60,29 +60,13 @@ export default function Hero({ mentors, summary }: HeroProps) {
 
           {summary.count > 0 ? (
             <p className="mt-8 text-[0.8125rem] leading-relaxed text-muted sm:mt-12">
-              Browse{" "}
-              <strong className="font-semibold text-foreground">
-                {summary.count} live mentors
-              </strong>
-              {summary.topLocation ? (
-                <>
-                  {" "}
-                  — including people active in{" "}
-                  <strong className="font-semibold text-foreground">
-                    {summary.topLocation}
-                  </strong>
-                </>
-              ) : null}
-              .
+              Trusted by learners, mentors, and ecosystem partners including EduBridge India.
             </p>
           ) : null}
         </div>
 
         <div className="w-full min-w-0 lg:min-h-[32rem]">
-          <LiveMentorPanel
-            mentors={mentors}
-            topLocation={summary.topLocation}
-          />
+          <LiveMentorPanel mentors={mentors} />
         </div>
       </div>
     </section>

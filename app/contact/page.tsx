@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import LegalLayout from "@/components/LegalLayout";
 import ContactForm from "@/components/ContactForm";
 import { createStubMetadata } from "@/components/StubPage";
+import { SOCIAL_LINKS } from "@/lib/social";
 
 export const metadata: Metadata = createStubMetadata(
   "Contact Us",
@@ -29,6 +30,25 @@ const contactDetails = [
     label: "CIN",
     value: "U85500PB2025OPC064679",
     href: null,
+  },
+] as const;
+
+const communityChannels = [
+  {
+    ...SOCIAL_LINKS.discord,
+    description: "Chat with mentors and learners live",
+  },
+  {
+    ...SOCIAL_LINKS.whatsapp,
+    description: "Join the Mentorle India community group",
+  },
+  {
+    ...SOCIAL_LINKS.linkedin,
+    description: "Follow company updates and news",
+  },
+  {
+    ...SOCIAL_LINKS.instagram,
+    description: "See sessions, events, and stories",
   },
 ] as const;
 
@@ -75,20 +95,36 @@ export default function ContactPage() {
             ))}
             <div className="rounded-2xl bg-[#243044] p-5 text-white">
               <p className="font-display text-xl tracking-tight">
-                Prefer Telegram?
+                Prefer community channels?
               </p>
               <p className="mt-2 text-sm leading-relaxed text-white/70">
-                Join the Mentorle discussion forum for community questions and
-                updates.
+                Reach us on Discord, WhatsApp, LinkedIn, or Instagram for
+                updates and quick questions.
               </p>
-              <a
-                href="https://t.me/mentorle"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-flex text-sm font-medium text-white underline-offset-4 hover:underline"
-              >
-                Join Discussion Forum ↗
-              </a>
+              <ul className="mt-4 space-y-2">
+                {communityChannels.map((channel) => (
+                  <li key={channel.label}>
+                    <a
+                      href={channel.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-start justify-between gap-3 text-sm"
+                    >
+                      <span>
+                        <span className="font-medium text-white underline-offset-4 group-hover:underline">
+                          {channel.label}
+                        </span>
+                        <span className="mt-0.5 block text-white/60">
+                          {channel.description}
+                        </span>
+                      </span>
+                      <span aria-hidden="true" className="text-white/50">
+                        ↗
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </aside>
 

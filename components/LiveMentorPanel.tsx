@@ -6,13 +6,9 @@ import MentorCard from "./MentorCard";
 
 type LiveMentorPanelProps = {
   mentors: Mentor[];
-  topLocation?: string | null;
 };
 
-export default function LiveMentorPanel({
-  mentors,
-  topLocation = null,
-}: LiveMentorPanelProps) {
+export default function LiveMentorPanel({ mentors }: LiveMentorPanelProps) {
   const [query, setQuery] = useState("");
 
   const isSearching = query.trim().length > 0;
@@ -87,20 +83,18 @@ export default function LiveMentorPanel({
       <div className="mt-auto grid grid-cols-2 gap-4 border-t border-border/70 pt-5">
         <div>
           <p className="font-display text-[1.75rem] leading-none tracking-tight text-foreground sm:text-[1.875rem]">
-            {mentors.length > 0 ? `${mentors.length}+` : "—"}
+            3+ yrs
           </p>
           <p className="mt-1.5 text-[0.8125rem] leading-snug text-muted">
-            Mentors ready to connect
+            Building mentorship infrastructure
           </p>
         </div>
         <div className="border-l border-border/70 pl-4 sm:pl-5">
           <p className="font-display text-[1.75rem] leading-none tracking-tight text-foreground sm:text-[1.875rem]">
-            {topLocation ?? "Live"}
+            Punjab
           </p>
           <p className="mt-1.5 text-[0.8125rem] leading-snug text-muted">
-            {topLocation
-              ? "Most common mentor location"
-              : "Search the full mentor network"}
+            Growing beyond the region
           </p>
         </div>
       </div>

@@ -219,7 +219,8 @@ export function summarizeMentors(mentors: Mentor[]): MentorSummary {
     industryCount: industries.size,
     locationCount: locations.size,
     topIndustry: topKey(industries),
-    topLocation: topKey(locations),
+    // Brand home — Mentorle is rooted in Punjab (not derived from mentor cities).
+    topLocation: "Punjab",
     topTags: buildMentorTags(mentors).slice(0, 6),
   };
 }
