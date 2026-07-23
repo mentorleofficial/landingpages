@@ -93,11 +93,11 @@ export default function ContactPage() {
                 )}
               </div>
             ))}
-            <div className="rounded-2xl bg-[#243044] p-5 text-white">
-              <p className="font-display text-xl tracking-tight">
+            <div className="rounded-2xl border border-border/70 bg-background p-5">
+              <p className="font-display text-xl tracking-tight text-foreground">
                 Prefer community channels?
               </p>
-              <p className="mt-2 text-sm leading-relaxed text-white/70">
+              <p className="mt-2 text-sm leading-relaxed text-muted">
                 Reach us on Discord, WhatsApp, LinkedIn, or Instagram for
                 updates and quick questions.
               </p>
@@ -111,14 +111,14 @@ export default function ContactPage() {
                       className="group flex items-start justify-between gap-3 text-sm"
                     >
                       <span>
-                        <span className="font-medium text-white underline-offset-4 group-hover:underline">
+                        <span className="font-medium text-foreground underline-offset-4 group-hover:underline">
                           {channel.label}
                         </span>
-                        <span className="mt-0.5 block text-white/60">
+                        <span className="mt-0.5 block text-muted">
                           {channel.description}
                         </span>
                       </span>
-                      <span aria-hidden="true" className="text-white/50">
+                      <span aria-hidden="true" className="text-muted">
                         ↗
                       </span>
                     </a>

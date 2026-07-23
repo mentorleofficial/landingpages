@@ -47,7 +47,7 @@ export default function CommunityPage() {
   return (
     <div className="bg-grid flex min-h-full flex-1 flex-col">
       <Header />
-      <main className="flex flex-1 flex-col">
+      <main className="page-enter flex flex-1 flex-col">
         <section
           aria-labelledby="community-hero-heading"
           className="relative overflow-hidden"
@@ -107,7 +107,7 @@ export default function CommunityPage() {
               {channels.map((channel) => (
                 <li
                   key={channel.label}
-                  className="flex flex-col rounded-2xl border border-border/70 bg-background p-6"
+                  className="hover-lift flex flex-col rounded-2xl border border-border/70 bg-background p-6"
                 >
                   <h3 className="text-[1.125rem] font-semibold text-foreground">
                     {channel.title}

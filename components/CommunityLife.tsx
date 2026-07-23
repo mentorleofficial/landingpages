@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "@/components/Reveal";
 
 type Moment = {
   title: string;
@@ -50,8 +51,8 @@ const bottomMoments: Moment[] = [
 
 function MomentCard({ moment }: { moment: Moment }) {
   return (
-    <article className="flex h-[17rem] w-[26rem] shrink-0 items-stretch gap-4 rounded-[1.75rem] bg-[#2a241f] p-3.5 ring-1 ring-white/8 sm:h-[18rem] sm:w-[30rem] sm:gap-5 sm:p-4">
-      <div className="relative w-[38%] shrink-0 overflow-hidden rounded-[1.25rem]">
+    <article className="flex h-[17rem] w-[26rem] shrink-0 items-stretch gap-4 rounded-[1.75rem] border border-border/70 bg-white p-3.5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] sm:h-[18rem] sm:w-[30rem] sm:gap-5 sm:p-4">
+      <div className="relative w-[38%] shrink-0 overflow-hidden rounded-[1.25rem] bg-panel">
         <Image
           src={moment.image}
           alt=""
@@ -62,13 +63,13 @@ function MomentCard({ moment }: { moment: Moment }) {
       </div>
       <div className="flex min-w-0 flex-1 flex-col justify-center py-2 pr-2 sm:pr-3">
         <span
-          className="mb-3 block h-[3px] w-9 rounded-full bg-[#F5C84C]"
+          className="mb-3 block h-[3px] w-9 rounded-full bg-foreground"
           aria-hidden="true"
         />
-        <h3 className="text-[1.125rem] leading-snug font-semibold text-white sm:text-[1.25rem]">
+        <h3 className="text-[1.125rem] leading-snug font-semibold text-foreground sm:text-[1.25rem]">
           {moment.title}
         </h3>
-        <p className="mt-2.5 text-[0.875rem] leading-relaxed text-white/65 sm:text-[0.9375rem]">
+        <p className="mt-2.5 text-[0.875rem] leading-relaxed text-muted sm:text-[0.9375rem]">
           {moment.description}
         </p>
       </div>
@@ -104,28 +105,21 @@ export default function CommunityLife() {
   return (
     <section
       aria-labelledby="life-heading"
-      className="relative overflow-hidden bg-[#1a2332] py-16 text-white sm:py-20 lg:py-24"
+      className="relative overflow-hidden border-t border-border/60 bg-background py-16 sm:py-20 lg:py-24"
     >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-40"
-        aria-hidden="true"
-        style={{
-          background:
-            "radial-gradient(ellipse 50% 40% at 20% 30%, rgba(180,120,80,0.35), transparent 60%), radial-gradient(ellipse 40% 35% at 80% 70%, rgba(90,70,140,0.25), transparent 55%)",
-        }}
-      />
-
       <div className="relative mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
-        <h2
-          id="life-heading"
-          className="text-center font-display text-[2rem] tracking-tight sm:text-[2.5rem] md:text-[2.75rem]"
-        >
-          Life at <em className="italic">Mentorle</em>
-        </h2>
-        <p className="mx-auto mt-3 max-w-[32rem] text-center text-[1rem] leading-relaxed text-white/60">
-          Sessions, campuses, meetups, and the moments that make mentorship feel
-          real — not another feed of content.
-        </p>
+        <Reveal>
+          <h2
+            id="life-heading"
+            className="text-center font-display text-[2rem] tracking-tight text-foreground sm:text-[2.5rem] md:text-[2.75rem]"
+          >
+            Life at <em className="italic">Mentorle</em>
+          </h2>
+          <p className="mx-auto mt-3 max-w-[32rem] text-center text-[1rem] leading-relaxed text-muted">
+            Sessions, campuses, meetups, and the moments that make mentorship
+            feel real — not another feed of content.
+          </p>
+        </Reveal>
       </div>
 
       <div className="relative mt-10 flex flex-col gap-4 sm:mt-12 sm:gap-5">

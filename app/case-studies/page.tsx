@@ -1,17 +1,5 @@
-import type { Metadata } from "next";
-import StubPage, { createStubMetadata } from "@/components/StubPage";
-
-export const metadata: Metadata = createStubMetadata(
-  "Case studies",
-  "See how learners and founders grow through Mentorle mentorship, sessions, and community support.",
-  "/case-studies",
-);
+import { redirect } from "next/navigation";
 
 export default function CaseStudiesPage() {
-  return (
-    <StubPage
-      title="Case studies"
-      description="Stories from students, founders, and mentors who used Mentorle to get practical guidance and move faster."
-    />
-  );
+  redirect("/about");
 }

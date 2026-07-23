@@ -22,7 +22,7 @@ export default async function Home() {
   return (
     <div className="bg-grid flex min-h-full flex-1 flex-col">
       <Header />
-      <main className="flex flex-1 flex-col">
+      <main className="page-enter flex flex-1 flex-col">
         <Hero mentors={allMentors} summary={summary} />
         <TrustedBy />
         <WhyMentorleExists />

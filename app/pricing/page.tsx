@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import LegalLayout from "@/components/LegalLayout";
 import Membership from "@/components/Membership";
+import FaqSection, { FaqContactFooter } from "@/components/FaqSection";
 import { createStubMetadata } from "@/components/StubPage";
 
 export const metadata: Metadata = createStubMetadata(
@@ -57,45 +57,12 @@ export default function PricingPage() {
 
       <Membership />
 
-      <section className="border-t border-border/60 bg-white">
-        <div className="mx-auto max-w-[800px] px-5 py-16 sm:px-8 sm:py-20">
-          <h2 className="text-center font-display text-[1.875rem] tracking-tight text-foreground sm:text-[2.25rem]">
-            Pricing FAQ
-          </h2>
-          <ul className="mt-10 space-y-4">
-            {faqs.map((item) => (
-              <li
-                key={item.q}
-                className="rounded-2xl border border-border/70 bg-background p-5 sm:p-6"
-              >
-                <h3 className="text-[1rem] font-semibold text-foreground">
-                  {item.q}
-                </h3>
-                <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted">
-                  {item.a}
-                </p>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-8 text-center text-sm text-muted">
-            Still deciding?{" "}
-            <Link
-              href="/contact"
-              className="font-medium text-foreground underline-offset-4 hover:underline"
-            >
-              Contact us
-            </Link>{" "}
-            or{" "}
-            <Link
-              href="/#faq"
-              className="font-medium text-foreground underline-offset-4 hover:underline"
-            >
-              read the full FAQ
-            </Link>
-            .
-          </p>
-        </div>
-      </section>
+      <FaqSection
+        headingId="pricing-faq-heading"
+        title="Pricing FAQ"
+        items={faqs}
+        footer={<FaqContactFooter fullFaqHref="/#faq" />}
+      />
     </LegalLayout>
   );
 }
