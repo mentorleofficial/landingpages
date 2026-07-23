@@ -41,6 +41,28 @@ export type MentorDataRow = {
   past_experience: unknown;
 };
 
+/** Row from public.users used to enrich / fill mentor profiles. */
+export type UserMentorRow = {
+  id: string;
+  full_name: string;
+  avatar_url: string | null;
+  is_disabled: boolean;
+  role: string;
+};
+
+/** Row from public.mentor_profiles */
+export type MentorProfileRow = {
+  user_id: string;
+  bio: string | null;
+  expertise: string[] | null;
+  years_experience: number | null;
+  is_active: boolean;
+  headline: string | null;
+  current_organization: string | null;
+  current_role: string | null;
+  professional_status: string | null;
+};
+
 export const FALLBACK_AVATAR = "/icon.svg";
 
 const APPROVED_STATUSES = ["approved", "active", "verified", "accepted"];
@@ -48,6 +70,14 @@ const APPROVED_STATUSES = ["approved", "active", "verified", "accepted"];
 export function isApprovedMentor(status: string | null | undefined) {
   if (!status) return false;
   return APPROVED_STATUSES.includes(status.toLowerCase());
+}
+
+function firstHttpUrl(...candidates: Array<string | null | undefined>) {
+  for (const candidate of candidates) {
+    const value = candidate?.trim();
+    if (value && /^https?:\/\//i.test(value)) return value;
+  }
+  return null;
 }
 
 function stringifyPastExperience(value: unknown): string {
@@ -107,7 +137,7 @@ export function mapMentorRow(row: MentorDataRow): Mentor {
     name,
     role,
     stat,
-    image: row.profile_url?.trim() || FALLBACK_AVATAR,
+    image: firstHttpUrl(row.profile_url) || FALLBACK_AVATAR,
     bio,
     categories: Array.from(new Set(categories)),
     expertise,
@@ -116,6 +146,100 @@ export function mapMentorRow(row: MentorDataRow): Mentor {
     languages,
     searchText,
   };
+}
+
+/** Merge users + mentor_profiles + mentor_data into one Mentor card. */
+export function mapMergedMentor(input: {
+  user: UserMentorRow;
+  profile?: MentorProfileRow | null;
+  data?: MentorDataRow | null;
+}): Mentor {
+  const { user, profile, data } = input;
+
+  const expertise = (
+    profile?.expertise?.filter(Boolean) ??
+    data?.expertise_area?.filter(Boolean) ??
+    []
+  ) as string[];
+  const languages = data?.languages_spoken?.filter(Boolean) ?? [];
+  const organization = profile?.current_organization?.trim() || null;
+  const industry = data?.Industry?.trim() || null;
+  const categories = [
+    ...(organization ? [organization] : []),
+    ...(industry ? [industry] : []),
+    ...expertise,
+  ].filter(Boolean);
+
+  const years = profile?.years_experience ?? data?.experience_years ?? null;
+  const badge = data?.badge?.trim() || null;
+  const location = data?.location?.trim() || null;
+  const stat =
+    years && years > 0
+      ? `${years}+ years experience`
+      : organization || badge || location || "Verified mentor";
+
+  const name = user.full_name?.trim() || data?.name?.trim() || "Mentor";
+  const role =
+    profile?.current_role?.trim() ||
+    profile?.headline?.trim() ||
+    data?.current_role?.trim() ||
+    data?.role?.trim() ||
+    "Mentor";
+  const bio =
+    profile?.bio?.trim() ||
+    data?.bio?.trim() ||
+    "Experienced mentor on Mentorle.";
+
+  // Prefer users.avatar_url — mentor_data.profile_url is often a broken signed URL
+  // from an older Supabase project.
+  const image =
+    firstHttpUrl(user.avatar_url, data?.profile_url) || FALLBACK_AVATAR;
+
+  const pastExperience = stringifyPastExperience(data?.past_experience);
+
+  const searchText = [
+    name,
+    role,
+    profile?.headline,
+    profile?.current_role,
+    profile?.current_organization,
+    profile?.professional_status,
+    data?.role,
+    data?.current_role,
+    stat,
+    bio,
+    location,
+    badge,
+    industry,
+    data?.email,
+    pastExperience,
+    ...categories,
+    ...expertise,
+    ...languages,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+  return {
+    id: user.id,
+    name,
+    role,
+    stat,
+    image,
+    bio,
+    categories: Array.from(new Set(categories)),
+    expertise,
+    location,
+    badge,
+    languages,
+    searchText,
+  };
+}
+
+/** @deprecated Prefer mapMergedMentor — kept for compatibility. */
+export function mapUserMentorRow(user: UserMentorRow): Mentor {
+  return mapMergedMentor({ user });
 }
 
 export function toSpotlightMentor(mentor: Mentor): SpotlightMentor {

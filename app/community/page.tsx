@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CommunityLife from "@/components/CommunityLife";
 import { createStubMetadata } from "@/components/StubPage";
 import { SOCIAL_LINKS } from "@/lib/social";
 
@@ -85,6 +86,8 @@ export default function CommunityPage() {
             </div>
           </div>
         </section>
+
+        <CommunityLife />
 
         <section
           aria-labelledby="community-channels-heading"
