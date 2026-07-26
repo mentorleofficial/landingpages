@@ -26,8 +26,8 @@ export default function Hero({ mentors, summary }: HeroProps) {
           </h1>
 
           <p className="mt-4 max-w-md text-[1rem] leading-relaxed text-muted sm:mt-5 sm:text-[1.125rem]">
-            Connect with verified mentors, join expert sessions, and grow
-            through practical support — not more content.
+            Search mentors by industry or expertise, filter what you need, and
+            book a conversation with someone who&apos;s been there.
           </p>
 
           <div className="mt-7 flex flex-col items-stretch gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-3.5">
@@ -48,15 +48,15 @@ export default function Hero({ mentors, summary }: HeroProps) {
 
           <p className="mt-8 text-[0.8125rem] leading-relaxed text-muted sm:mt-10">
             {summary.count > 0
-              ? `${summary.count}+ mentors · 3+ years · Punjab`
-              : "3+ years · Built in Punjab · Growing outward"}
+              ? `${summary.count}+ mentors live · Search, filter, book`
+              : "Search, filter, and book mentorship conversations"}
           </p>
         </Reveal>
 
         <Reveal
           delay={120}
           variant="scale"
-          className="w-full min-w-0 lg:min-h-[32rem]"
+          className="w-full min-w-0 lg:min-h-[34rem]"
         >
           <LiveMentorPanel mentors={mentors} />
         </Reveal>

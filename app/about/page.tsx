@@ -94,7 +94,7 @@ export default function AboutPage() {
                   Join Free
                 </a>
                 <Link
-                  href="/community"
+                  href="/#community"
                   className="inline-flex h-12 items-center justify-center rounded-full border border-foreground/20 bg-white px-7 text-[0.9375rem] font-medium text-foreground transition-colors hover:border-foreground/40 hover:bg-neutral-50"
                 >
                   Explore Community

@@ -1,92 +1,27 @@
-type TrustItem = {
-  title: string;
-  subtitle: string;
-  icon: "clock" | "building" | "grad" | "pin";
-};
+import Image from "next/image";
 
-const trustItems: TrustItem[] = [
+const logos = [
   {
-    title: "3+ Years",
-    subtitle: "Built with intention",
-    icon: "clock",
+    name: "GNDU",
+    fullName: "Guru Nanak Dev University",
+    src: "/partners/gndu.png",
   },
   {
-    title: "EduBridge India",
-    subtitle: "Trusted partner",
-    icon: "building",
+    name: "EduBridge",
+    fullName: "EduBridge",
+    src: "/partners/edubridge.png",
   },
   {
-    title: "CGC",
-    subtitle: "MoU partnership",
-    icon: "grad",
+    name: "CGC",
+    fullName: "CGC University",
+    src: "/partners/cgc.png",
   },
   {
-    title: "CT University",
-    subtitle: "MoU partnership",
-    icon: "grad",
+    name: "CT University",
+    fullName: "CT University",
+    src: "/partners/ct.png",
   },
-  {
-    title: "Punjab & Beyond",
-    subtitle: "Built locally, growing outward",
-    icon: "pin",
-  },
-];
-
-function TrustIcon({ type }: { type: TrustItem["icon"] }) {
-  const common = {
-    className: "size-[1.125rem] text-foreground",
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 1.6,
-    "aria-hidden": true as const,
-  };
-
-  switch (type) {
-    case "clock":
-      return (
-        <svg {...common}>
-          <circle cx="12" cy="12" r="8" />
-          <path d="M12 8v4.5l3 1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      );
-    case "building":
-      return (
-        <svg {...common}>
-          <path
-            d="M4 20h16M6 20V7.5L12 4l6 3.5V20M10 20v-4h4v4M9.5 10h1M13.5 10h1M9.5 13.5h1M13.5 13.5h1"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      );
-    case "grad":
-      return (
-        <svg {...common}>
-          <path
-            d="M3 10.5 12 5l9 5.5-9 5.5-9-5.5Z"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M7 12.8v3.7c0 .8 2.2 2 5 2s5-1.2 5-2v-3.7"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path d="M21 10.5v5" strokeLinecap="round" />
-        </svg>
-      );
-    case "pin":
-      return (
-        <svg {...common}>
-          <path
-            d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10Z"
-            strokeLinejoin="round"
-          />
-          <circle cx="12" cy="11" r="2.1" />
-        </svg>
-      );
-  }
-}
+] as const;
 
 export default function TrustedBy() {
   return (
@@ -94,34 +29,65 @@ export default function TrustedBy() {
       aria-labelledby="trusted-by-heading"
       className="border-y border-border/70 bg-background"
     >
-      <div className="mx-auto max-w-[1200px] px-5 py-10 sm:px-8 sm:py-12 lg:px-10">
-        <h2
-          id="trusted-by-heading"
-          className="text-center text-[0.6875rem] font-medium tracking-[0.14em] text-muted uppercase"
-        >
-          Trusted by institutions, founders, and learners
-        </h2>
-
-        <ul className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-6 sm:gap-x-10 lg:justify-between lg:gap-x-4">
-          {trustItems.map((item) => (
-            <li
-              key={item.title}
-              className="flex w-full max-w-[16rem] items-start gap-3 min-[480px]:w-[calc(50%-1.25rem)] md:w-[calc(33.333%-1.75rem)] lg:w-auto lg:max-w-[12.5rem] lg:flex-1"
-            >
-              <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-[0.7rem] border border-border bg-white">
-                <TrustIcon type={item.icon} />
-              </span>
-              <div className="min-w-0">
-                <p className="text-[0.9375rem] leading-tight font-semibold text-foreground">
-                  {item.title}
+      <div className="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 sm:py-10 lg:px-10">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-4 sm:gap-x-6">
+            <div className="flex items-center gap-3.5 sm:gap-4">
+              <p className="text-[2.5rem] leading-none font-semibold tracking-tight text-foreground sm:text-[2.875rem]">
+                3+
+              </p>
+              <span
+                className="h-10 w-px shrink-0 bg-border sm:h-11"
+                aria-hidden="true"
+              />
+              <div className="leading-tight">
+                <p className="text-[0.875rem] font-semibold text-foreground sm:text-[0.9375rem]">
+                  Years
                 </p>
-                <p className="mt-0.5 text-[0.8125rem] leading-snug text-muted">
-                  {item.subtitle}
+                <p className="mt-0.5 text-[0.75rem] text-muted sm:text-[0.8125rem]">
+                  Built with intention
                 </p>
               </div>
-            </li>
-          ))}
-        </ul>
+            </div>
+
+            <span
+              className="hidden h-10 w-px shrink-0 bg-border sm:block sm:h-11"
+              aria-hidden="true"
+            />
+
+            <h2
+              id="trusted-by-heading"
+              className="font-mono text-[0.875rem] tracking-tight text-foreground sm:text-[0.975rem]"
+            >
+              Trusted and worked with.
+            </h2>
+          </div>
+
+          <ul
+            className="grid grid-cols-2 gap-x-6 gap-y-5 min-[480px]:grid-cols-4 sm:gap-x-8 lg:gap-x-10"
+            aria-label="Partner institutions"
+          >
+            {logos.map((logo) => (
+              <li
+                key={logo.fullName}
+                className="flex flex-col items-center gap-2.5 text-center"
+              >
+                <span className="relative block size-16 overflow-hidden rounded-full border border-border bg-white sm:size-[4.5rem]">
+                  <Image
+                    src={logo.src}
+                    alt={logo.fullName}
+                    fill
+                    sizes="72px"
+                    className="object-contain p-1"
+                  />
+                </span>
+                <span className="max-w-[6.5rem] text-[0.75rem] leading-snug font-medium text-foreground sm:text-[0.8125rem]">
+                  {logo.name}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

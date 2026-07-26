@@ -104,18 +104,22 @@ function MarqueeRow({
 export default function CommunityLife() {
   return (
     <section
+      id="community"
       aria-labelledby="life-heading"
       className="relative overflow-hidden border-t border-border/60 bg-background py-16 sm:py-20 lg:py-24"
     >
       <div className="relative mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
-        <Reveal>
+        <Reveal className="mx-auto max-w-[40rem]">
+          <p className="text-[0.6875rem] font-medium tracking-[0.14em] text-muted uppercase">
+            Real proof
+          </p>
           <h2
             id="life-heading"
-            className="text-center font-display text-[2rem] tracking-tight text-foreground sm:text-[2.5rem] md:text-[2.75rem]"
+            className="mt-3 font-display text-[2rem] tracking-tight text-foreground sm:text-[2.5rem] md:text-[2.75rem]"
           >
-            Life at <em className="italic">Mentorle</em>
+            Real proof, not just promises.
           </h2>
-          <p className="mx-auto mt-3 max-w-[32rem] text-center text-[1rem] leading-relaxed text-muted">
+          <p className="mt-3 max-w-[32rem] text-[1rem] leading-relaxed text-muted">
             Sessions, campuses, meetups, and the moments that make mentorship
             feel real — not another feed of content.
           </p>

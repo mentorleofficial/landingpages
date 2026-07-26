@@ -6,6 +6,7 @@ import WhoMentorleIsFor from "@/components/WhoMentorleIsFor";
 import WhatYouCanDoHere from "@/components/WhatYouCanDoHere";
 import MentorSpotlight from "@/components/MentorSpotlight";
 import Membership from "@/components/Membership";
+import CommunityLife from "@/components/CommunityLife";
 import CommunityEvents from "@/components/CommunityEvents";
 import WallOfMomentum from "@/components/WallOfMomentum";
 import FAQ from "@/components/FAQ";
@@ -33,6 +34,7 @@ export default async function Home() {
           mentorCount={allMentors.length}
         />
         <Membership />
+        <CommunityLife />
         <CommunityEvents mentors={allMentors} summary={summary} />
         <WallOfMomentum mentors={allMentors} />
         <FAQ />

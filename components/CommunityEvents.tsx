@@ -111,10 +111,10 @@ export default function CommunityEvents({
                   WhatsApp
                 </a>
                 <Link
-                  href="/community"
+                  href="/#community"
                   className="inline-flex h-10 items-center rounded-full border border-border bg-white px-4 text-[0.8125rem] font-medium text-foreground transition-colors hover:border-neutral-400"
                 >
-                  All channels →
+                  Join community →
                 </Link>
               </div>
             </Reveal>
