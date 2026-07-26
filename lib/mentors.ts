@@ -20,6 +20,8 @@ export type SpotlightMentor = {
   bio: string;
   image: string;
   tags: string[];
+  stat: string;
+  experienceLabel: string | null;
 };
 
 /** Raw row shape from public.mentor_data */
@@ -242,14 +244,31 @@ export function mapUserMentorRow(user: UserMentorRow): Mentor {
   return mapMergedMentor({ user });
 }
 
+function formatExperienceLabel(stat: string): string | null {
+  const match = stat.match(/(\d+)\+?\s*years?/i);
+  if (match) return `${match[1]} Years Exp.`;
+  if (/years?/i.test(stat)) return stat;
+  return null;
+}
+
 export function toSpotlightMentor(mentor: Mentor): SpotlightMentor {
+  const tags = [
+    ...new Set(
+      [...mentor.expertise, ...mentor.categories]
+        .map((tag) => tag.trim())
+        .filter(Boolean),
+    ),
+  ].slice(0, 6);
+
   return {
     id: mentor.id,
     name: mentor.name,
     role: mentor.role,
     bio: mentor.bio,
     image: mentor.image,
-    tags: mentor.categories.slice(0, 3),
+    tags,
+    stat: mentor.stat,
+    experienceLabel: formatExperienceLabel(mentor.stat),
   };
 }
 

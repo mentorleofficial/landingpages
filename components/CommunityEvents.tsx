@@ -32,8 +32,8 @@ export default function CommunityEvents({
   mentors,
   summary,
 }: CommunityEventsProps) {
-  const faces = mentors.filter((m) => m.image.startsWith("http")).slice(0, 8);
-  const gallery = faces.length >= 4 ? faces : mentors.slice(0, 8);
+  const faces = mentors.filter((m) => m.image.startsWith("http")).slice(0, 4);
+  const gallery = faces.length >= 4 ? faces : mentors.slice(0, 4);
 
   return (
     <section

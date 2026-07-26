@@ -18,7 +18,7 @@ import { summarizeMentors } from "@/lib/mentors";
 export default async function Home() {
   const allMentors = await fetchMentors();
   const summary = summarizeMentors(allMentors);
-  const spotlightMentors = allMentors.slice(0, 12);
+  const spotlightMentors = allMentors.slice(0, 6);
 
   return (
     <div className="bg-grid flex min-h-full flex-1 flex-col">
