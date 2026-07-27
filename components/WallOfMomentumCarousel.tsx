@@ -57,7 +57,13 @@ export default function WallOfMomentumCarousel({
   const canLoop = count > 1;
 
   const looped = useMemo(() => {
-    if (!canLoop) return testimonials.map((item, index) => ({ item, index }));
+    if (!canLoop) {
+      return testimonials.map((item, index) => ({
+        item,
+        index,
+        key: item.id,
+      }));
+    }
     return Array.from({ length: LOOP_SETS }, (_, set) =>
       testimonials.map((item, index) => ({
         item,
@@ -211,7 +217,7 @@ export default function WallOfMomentumCarousel({
 
           return (
             <li
-              key={"key" in entry ? entry.key : item.id}
+              key={entry.key}
               data-momentum-card
               className={`w-[min(100%,20rem)] shrink-0 snap-center transition-[transform,opacity] duration-300 ease-out sm:w-[min(100%,30rem)] lg:w-[36rem] ${
                 isActive
