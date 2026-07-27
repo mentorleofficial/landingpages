@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "./Reveal";
 
 const logos = [
   {
@@ -31,7 +32,7 @@ export default function TrustedBy() {
     >
       <div className="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 sm:py-10 lg:px-10">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-4 sm:gap-x-6">
+          <Reveal className="flex flex-wrap items-center gap-x-5 gap-y-4 sm:gap-x-6">
             <div className="flex items-center gap-3.5 sm:gap-4">
               <p className="text-[2.5rem] leading-none font-semibold tracking-tight text-foreground sm:text-[2.875rem]">
                 3+
@@ -61,15 +62,18 @@ export default function TrustedBy() {
             >
               Trusted and worked with.
             </h2>
-          </div>
+          </Reveal>
 
           <ul
             className="grid grid-cols-2 gap-x-6 gap-y-5 min-[480px]:grid-cols-4 sm:gap-x-8 lg:gap-x-10"
             aria-label="Partner institutions"
           >
-            {logos.map((logo) => (
-              <li
+            {logos.map((logo, index) => (
+              <Reveal
                 key={logo.fullName}
+                as="li"
+                delay={80 + index * 70}
+                variant="scale"
                 className="flex flex-col items-center gap-2.5 text-center"
               >
                 <span className="relative block size-16 overflow-hidden rounded-full border border-border bg-white sm:size-[4.5rem]">
@@ -84,7 +88,7 @@ export default function TrustedBy() {
                 <span className="max-w-[6.5rem] text-[0.75rem] leading-snug font-medium text-foreground sm:text-[0.8125rem]">
                   {logo.name}
                 </span>
-              </li>
+              </Reveal>
             ))}
           </ul>
         </div>

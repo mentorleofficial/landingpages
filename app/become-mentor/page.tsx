@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import BecomeMentorFAQ from "@/components/become-mentor/BecomeMentorFAQ";
 import Footer from "@/components/Footer";
+import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Become a Mentor",
@@ -94,32 +95,34 @@ export default function BecomeMentorPage() {
   return (
     <div className="bg-grid flex min-h-full flex-1 flex-col">
       <Header />
-      <main className="flex flex-1 flex-col">
+      <main className="page-enter flex flex-1 flex-col">
         {/* Hero */}
         <section
           aria-labelledby="become-hero-heading"
           className="relative overflow-hidden"
         >
           <div className="mx-auto max-w-[800px] px-5 py-16 text-center sm:px-8 sm:py-20 lg:py-24">
-            <p className="text-[0.6875rem] font-medium tracking-[0.14em] text-muted uppercase">
-              Mentors
-            </p>
-            <h1
-              id="become-hero-heading"
-              className="mt-4 font-display text-[2.75rem] leading-[1.1] tracking-tight text-foreground sm:text-[3.5rem] md:text-[3.85rem]"
-            >
-              Make a Difference – Become a Mentor
-            </h1>
-            <p className="mx-auto mt-5 max-w-[34rem] text-[1.0625rem] leading-relaxed text-muted sm:text-[1.125rem]">
-              Share your knowledge, inspire the next generation, and grow your
-              leadership skills.
-            </p>
-            <a
-              href="https://platform.mentorle.in/become-a-mentor"
-              className="mt-8 inline-flex h-12 items-center justify-center rounded-full bg-foreground px-7 text-[0.9375rem] font-medium text-white transition-colors hover:bg-neutral-800"
-            >
-              Apply Now
-            </a>
+            <Reveal>
+              <p className="text-[0.6875rem] font-medium tracking-[0.14em] text-muted uppercase">
+                Mentors
+              </p>
+              <h1
+                id="become-hero-heading"
+                className="mt-4 font-display text-[2.75rem] leading-[1.1] tracking-tight text-foreground sm:text-[3.5rem] md:text-[3.85rem]"
+              >
+                Make a Difference – Become a Mentor
+              </h1>
+              <p className="mx-auto mt-5 max-w-[34rem] text-[1.0625rem] leading-relaxed text-muted sm:text-[1.125rem]">
+                Share your knowledge, inspire the next generation, and grow your
+                leadership skills.
+              </p>
+              <a
+                href="https://platform.mentorle.in/become-a-mentor"
+                className="mt-8 inline-flex h-12 items-center justify-center rounded-full bg-foreground px-7 text-[0.9375rem] font-medium text-white transition-[background-color,transform] hover:bg-neutral-800 active:scale-[0.98]"
+              >
+                Apply Now
+              </a>
+            </Reveal>
           </div>
         </section>
 
@@ -129,17 +132,21 @@ export default function BecomeMentorPage() {
           className="border-t border-border/60 bg-white"
         >
           <div className="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
-            <h2
-              id="why-mentor-heading"
-              className="text-center font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
-            >
-              Why Be a Mentor?
-            </h2>
+            <Reveal>
+              <h2
+                id="why-mentor-heading"
+                className="text-center font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
+              >
+                Why Be a Mentor?
+              </h2>
+            </Reveal>
             <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
-              {reasons.map((reason) => (
-                <li
+              {reasons.map((reason, index) => (
+                <Reveal
                   key={reason.title}
-                  className="rounded-2xl border border-border/70 bg-background p-6"
+                  as="li"
+                  delay={index * 80}
+                  className="hover-lift rounded-2xl border border-border/70 bg-background p-6"
                 >
                   <span className="flex size-10 items-center justify-center rounded-xl bg-foreground">
                     <ReasonIcon type={reason.icon} />
@@ -150,7 +157,7 @@ export default function BecomeMentorPage() {
                   <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted">
                     {reason.description}
                   </p>
-                </li>
+                </Reveal>
               ))}
             </ul>
           </div>
@@ -162,14 +169,16 @@ export default function BecomeMentorPage() {
           className="border-t border-border/60 bg-background"
         >
           <div className="mx-auto max-w-[720px] px-5 py-16 sm:px-8 sm:py-20">
-            <h2
-              id="eligibility-heading"
-              className="text-center font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
-            >
-              Eligibility Criteria
-            </h2>
+            <Reveal>
+              <h2
+                id="eligibility-heading"
+                className="text-center font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
+              >
+                Eligibility Criteria
+              </h2>
+            </Reveal>
             <ul className="mt-8 space-y-4">
-              <li className="flex items-start gap-3 rounded-2xl border border-border/70 bg-white p-5">
+              <Reveal as="li" delay={60} className="hover-lift flex items-start gap-3 rounded-2xl border border-border/70 bg-white p-5">
                 <span
                   className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-foreground text-xs text-white"
                   aria-hidden="true"
@@ -180,8 +189,8 @@ export default function BecomeMentorPage() {
                   Minimum 2 years of professional experience or advanced degree
                   holders.
                 </p>
-              </li>
-              <li className="flex items-start gap-3 rounded-2xl border border-border/70 bg-white p-5">
+              </Reveal>
+              <Reveal as="li" delay={120} className="hover-lift flex items-start gap-3 rounded-2xl border border-border/70 bg-white p-5">
                 <span
                   className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-foreground text-xs text-white"
                   aria-hidden="true"
@@ -191,7 +200,7 @@ export default function BecomeMentorPage() {
                 <p className="text-[0.9875rem] leading-relaxed text-foreground/85">
                   Passion for mentoring and guiding young minds.
                 </p>
-              </li>
+              </Reveal>
             </ul>
           </div>
         </section>
@@ -202,17 +211,21 @@ export default function BecomeMentorPage() {
           className="border-t border-border/60 bg-white"
         >
           <div className="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
-            <h2
-              id="process-heading"
-              className="text-center font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
-            >
-              Application Process
-            </h2>
+            <Reveal>
+              <h2
+                id="process-heading"
+                className="text-center font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
+              >
+                Application Process
+              </h2>
+            </Reveal>
             <ol className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
               {steps.map((item, index) => (
-                <li
+                <Reveal
                   key={item.step}
-                  className="relative rounded-2xl border border-border/70 bg-background p-6"
+                  as="li"
+                  delay={index * 90}
+                  className="hover-lift relative rounded-2xl border border-border/70 bg-background p-6"
                 >
                   <p className="font-display text-[2rem] leading-none text-muted/40">
                     {String(index + 1).padStart(2, "0")}
@@ -223,7 +236,7 @@ export default function BecomeMentorPage() {
                   <p className="mt-2 text-[1rem] font-medium leading-snug text-foreground">
                     {item.title}
                   </p>
-                </li>
+                </Reveal>
               ))}
             </ol>
           </div>
@@ -238,21 +251,24 @@ export default function BecomeMentorPage() {
           className="border-t border-border/60 bg-background"
         >
           <div className="mx-auto max-w-[720px] px-5 py-16 text-center sm:px-8 sm:py-20 lg:py-24">
-            <h2
-              id="apply-heading"
-              className="font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
-            >
-              Ready to Make an Impact?
-            </h2>
-            <p className="mx-auto mt-4 max-w-[30rem] text-[1rem] leading-relaxed text-muted">
-              Join our community of mentors and help shape the future of design.
-            </p>
-            <a
-              href="https://platform.mentorle.in/become-a-mentor"
-              className="mt-8 inline-flex h-12 items-center justify-center rounded-full bg-foreground px-7 text-[0.9375rem] font-medium text-white transition-colors hover:bg-neutral-800"
-            >
-              Apply to Be a Mentor
-            </a>
+            <Reveal>
+              <h2
+                id="apply-heading"
+                className="font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
+              >
+                Ready to Make an Impact?
+              </h2>
+              <p className="mx-auto mt-4 max-w-[30rem] text-[1rem] leading-relaxed text-muted">
+                Join our community of mentors and help shape the future of
+                design.
+              </p>
+              <a
+                href="https://platform.mentorle.in/become-a-mentor"
+                className="mt-8 inline-flex h-12 items-center justify-center rounded-full bg-foreground px-7 text-[0.9375rem] font-medium text-white transition-[background-color,transform] hover:bg-neutral-800 active:scale-[0.98]"
+              >
+                Apply to Be a Mentor
+              </a>
+            </Reveal>
           </div>
         </section>
       </main>

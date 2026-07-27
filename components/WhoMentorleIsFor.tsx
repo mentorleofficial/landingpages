@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Reveal from "./Reveal";
 
 const audiences = [
   {
@@ -155,21 +156,25 @@ export default function WhoMentorleIsFor() {
       className="bg-background"
     >
       <div className="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-        <p className="text-[0.6875rem] font-medium tracking-[0.14em] text-muted uppercase">
-          Who Mentorle is for
-        </p>
-        <h2
-          id="who-for-heading"
-          className="mt-3 max-w-[34rem] font-display text-[2.25rem] leading-[1.12] tracking-tight text-foreground sm:text-[2.75rem] md:text-[3.15rem]"
-        >
-          Whoever you are, if you&apos;re serious about moving forward.
-        </h2>
+        <Reveal>
+          <p className="text-[0.6875rem] font-medium tracking-[0.14em] text-muted uppercase">
+            Who Mentorle is for
+          </p>
+          <h2
+            id="who-for-heading"
+            className="mt-3 max-w-[34rem] font-display text-[2.25rem] leading-[1.12] tracking-tight text-foreground sm:text-[2.75rem] md:text-[3.15rem]"
+          >
+            Whoever you are, if you&apos;re serious about moving forward.
+          </h2>
+        </Reveal>
 
         <ul className="mt-10 grid grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
-          {audiences.map((item) => (
-            <li
+          {audiences.map((item, index) => (
+            <Reveal
               key={item.title}
-              className="flex flex-col rounded-2xl border border-border/70 bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] sm:p-6"
+              as="li"
+              delay={index * 70}
+              className="hover-lift flex flex-col rounded-2xl border border-border/70 bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] sm:p-6"
             >
               <AudienceIcon type={item.icon} filled={item.iconFilled} />
               <h3 className="mt-4 text-[1.0625rem] font-semibold text-foreground">
@@ -187,10 +192,14 @@ export default function WhoMentorleIsFor() {
                   </li>
                 ))}
               </ul>
-            </li>
+            </Reveal>
           ))}
 
-          <li className="flex min-h-[14rem] flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-transparent px-5 py-8 text-center sm:min-h-0 sm:p-6">
+          <Reveal
+            as="li"
+            delay={audiences.length * 70}
+            className="hover-lift flex min-h-[14rem] flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-transparent px-5 py-8 text-center sm:min-h-0 sm:p-6"
+          >
             <p className="text-[0.9375rem] text-muted">
               Not sure where you fit?
             </p>
@@ -200,7 +209,7 @@ export default function WhoMentorleIsFor() {
             >
               Join free and explore
             </a>
-          </li>
+          </Reveal>
         </ul>
       </div>
     </section>

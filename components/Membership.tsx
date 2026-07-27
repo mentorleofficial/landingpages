@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Reveal from "./Reveal";
 
 const freeFeatures = [
   "Join the Mentorle community",
@@ -35,7 +36,11 @@ function CheckIcon({ filled }: { filled: boolean }) {
         stroke="currentColor"
         strokeWidth="2"
       >
-        <path d="M2.5 6.2 4.8 8.5 9.5 3.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path
+          d="M2.5 6.2 4.8 8.5 9.5 3.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     </span>
   );
@@ -48,103 +53,108 @@ export default function Membership() {
       className="border-t border-border/60 bg-background"
     >
       <div className="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-        <p className="text-[0.6875rem] font-medium tracking-[0.14em] text-muted uppercase">
-          Membership
-        </p>
-        <h2
-          id="membership-heading"
-          className="mt-3 max-w-[36rem] font-display text-[2.25rem] leading-[1.12] tracking-tight text-foreground sm:text-[2.75rem] md:text-[3.15rem]"
-        >
-          Start free. Go deeper with{" "}
-          <em className="italic">Mentorle Plus</em>.
-        </h2>
-        <p className="mt-4 max-w-[40rem] text-[1rem] leading-relaxed text-muted sm:text-[1.0625rem]">
-          Join Mentorle for free to explore community, mentorship, and expert
-          sessions. Upgrade to Mentorle Plus for stronger discounts, exclusive
-          experiences, and deeper personal growth support.
-        </p>
+        <Reveal>
+          <p className="text-[0.6875rem] font-medium tracking-[0.14em] text-muted uppercase">
+            Membership
+          </p>
+          <h2
+            id="membership-heading"
+            className="mt-3 max-w-[36rem] font-display text-[2.25rem] leading-[1.12] tracking-tight text-foreground sm:text-[2.75rem] md:text-[3.15rem]"
+          >
+            Start free. Go deeper with{" "}
+            <em className="italic">Mentorle Plus</em>.
+          </h2>
+          <p className="mt-4 max-w-[40rem] text-[1rem] leading-relaxed text-muted sm:text-[1.0625rem]">
+            Join Mentorle for free to explore community, mentorship, and expert
+            sessions. Upgrade to Mentorle Plus for stronger discounts, exclusive
+            experiences, and deeper personal growth support.
+          </p>
+        </Reveal>
 
-        <div className="mt-10 grid grid-cols-1 gap-5 sm:mt-12 lg:grid-cols-2 lg:gap-6 lg:items-stretch">
-          {/* Free */}
-          <article className="flex flex-col rounded-[1.5rem] border border-border/60 bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] sm:p-8">
-            <h3 className="font-display text-[1.75rem] tracking-tight text-foreground sm:text-[2rem]">
-              Free
-            </h3>
-            <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted">
-              For curious students, learners, founders, and first-time members.
-            </p>
-            <p className="mt-6 flex flex-wrap items-baseline gap-1.5">
-              <span className="font-display text-[2.5rem] leading-none tracking-tight text-foreground sm:text-[2.75rem]">
-                ₹0
+        <div className="mt-10 grid grid-cols-1 items-stretch gap-5 sm:mt-12 lg:grid-cols-2 lg:gap-6">
+          <Reveal delay={60} className="h-full">
+            <article className="hover-lift flex h-full flex-col rounded-[1.5rem] border border-border/60 bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] sm:p-8">
+              <h3 className="font-display text-[1.75rem] tracking-tight text-foreground sm:text-[2rem]">
+                Free
+              </h3>
+              <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted">
+                For curious students, learners, founders, and first-time
+                members.
+              </p>
+              <p className="mt-6 flex flex-wrap items-baseline gap-1.5">
+                <span className="font-display text-[2.5rem] leading-none tracking-tight text-foreground sm:text-[2.75rem]">
+                  ₹0
+                </span>
+                <span className="text-[0.9375rem] text-muted">/ forever</span>
+              </p>
+
+              <ul className="mt-8 flex flex-col gap-3.5">
+                {freeFeatures.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3">
+                    <CheckIcon filled={false} />
+                    <span className="text-[0.9375rem] leading-snug text-foreground/85">
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-auto pt-8">
+                <a
+                  href="https://platform.mentorle.in/signup"
+                  className="inline-flex h-11 w-full items-center justify-center rounded-full border border-border bg-white px-6 text-[0.9375rem] font-medium text-foreground transition-colors hover:border-neutral-400 hover:bg-neutral-50 sm:w-auto"
+                >
+                  Join Free
+                </a>
+              </div>
+            </article>
+          </Reveal>
+
+          <Reveal delay={140} variant="scale" className="h-full">
+            <article className="hover-lift relative flex h-full flex-col rounded-[1.5rem] border-2 border-foreground bg-white p-6 pt-10 shadow-[0_1px_3px_rgba(0,0,0,0.04)] sm:p-8 sm:pt-12">
+              <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground px-3.5 py-1.5 text-[0.6875rem] font-medium tracking-[0.08em] text-white uppercase">
+                ★ Most popular
               </span>
-              <span className="text-[0.9375rem] text-muted">/ forever</span>
-            </p>
 
-            <ul className="mt-8 flex flex-col gap-3.5">
-              {freeFeatures.map((feature) => (
-                <li key={feature} className="flex items-start gap-3">
-                  <CheckIcon filled={false} />
-                  <span className="text-[0.9375rem] leading-snug text-foreground/85">
-                    {feature}
-                  </span>
-                </li>
-              ))}
-            </ul>
+              <h3 className="flex items-center gap-2 font-display text-[1.75rem] tracking-tight text-foreground sm:text-[2rem]">
+                <span aria-hidden="true" className="text-[1.25rem]">
+                  ✦
+                </span>
+                Mentorle Plus
+              </h3>
+              <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted">
+                For serious individuals who want more access, better value, and
+                faster growth.
+              </p>
 
-            <div className="mt-auto pt-8">
-              <a
-                href="https://platform.mentorle.in/signup"
-                className="inline-flex h-11 w-full items-center justify-center rounded-full border border-border bg-white px-6 text-[0.9375rem] font-medium text-foreground transition-colors hover:border-neutral-400 hover:bg-neutral-50 sm:w-auto"
-              >
-                Join Free
-              </a>
-            </div>
-          </article>
+              <p className="mt-6 flex flex-wrap items-baseline gap-2">
+                <span className="font-display text-[2.5rem] leading-none tracking-tight text-foreground sm:text-[2.75rem]">
+                  Plus
+                </span>
+                <span className="text-[1.0625rem] text-muted">membership</span>
+              </p>
 
-          {/* Plus */}
-          <article className="relative flex flex-col rounded-[1.5rem] border-2 border-foreground bg-white p-6 pt-10 shadow-[0_1px_3px_rgba(0,0,0,0.04)] sm:p-8 sm:pt-12">
-            <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground px-3.5 py-1.5 text-[0.6875rem] font-medium tracking-[0.08em] text-white uppercase">
-              ★ Most popular
-            </span>
+              <ul className="mt-8 flex flex-col gap-3.5">
+                {plusFeatures.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3">
+                    <CheckIcon filled />
+                    <span className="text-[0.9375rem] leading-snug text-foreground/85">
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ul>
 
-            <h3 className="flex items-center gap-2 font-display text-[1.75rem] tracking-tight text-foreground sm:text-[2rem]">
-              <span aria-hidden="true" className="text-[1.25rem]">
-                ✦
-              </span>
-              Mentorle Plus
-            </h3>
-            <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted">
-              For serious individuals who want more access, better value, and
-              faster growth.
-            </p>
-
-            <p className="mt-6 flex flex-wrap items-baseline gap-2">
-              <span className="font-display text-[2.5rem] leading-none tracking-tight text-foreground sm:text-[2.75rem]">
-                Plus
-              </span>
-              <span className="text-[1.0625rem] text-muted">membership</span>
-            </p>
-
-            <ul className="mt-8 flex flex-col gap-3.5">
-              {plusFeatures.map((feature) => (
-                <li key={feature} className="flex items-start gap-3">
-                  <CheckIcon filled />
-                  <span className="text-[0.9375rem] leading-snug text-foreground/85">
-                    {feature}
-                  </span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-auto pt-8">
-              <Link
-                href="/plus"
-                className="inline-flex h-11 w-full items-center justify-center rounded-full bg-foreground px-6 text-[0.9375rem] font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto"
-              >
-                Explore Mentorle Plus →
-              </Link>
-            </div>
-          </article>
+              <div className="mt-auto pt-8">
+                <Link
+                  href="/plus"
+                  className="inline-flex h-11 w-full items-center justify-center rounded-full bg-foreground px-6 text-[0.9375rem] font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto"
+                >
+                  Explore Mentorle Plus →
+                </Link>
+              </div>
+            </article>
+          </Reveal>
         </div>
       </div>
     </section>

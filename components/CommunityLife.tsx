@@ -51,7 +51,7 @@ const bottomMoments: Moment[] = [
 
 function MomentCard({ moment }: { moment: Moment }) {
   return (
-    <article className="flex h-[17rem] w-[26rem] shrink-0 items-stretch gap-4 rounded-[1.75rem] border border-border/70 bg-white p-3.5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] sm:h-[18rem] sm:w-[30rem] sm:gap-5 sm:p-4">
+    <article className="hover-lift flex h-[17rem] w-[26rem] shrink-0 items-stretch gap-4 rounded-[1.75rem] border border-border/70 bg-white p-3.5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] sm:h-[18rem] sm:w-[30rem] sm:gap-5 sm:p-4">
       <div className="relative w-[38%] shrink-0 overflow-hidden rounded-[1.25rem] bg-panel">
         <Image
           src={moment.image}
@@ -127,8 +127,12 @@ export default function CommunityLife() {
       </div>
 
       <div className="relative mt-10 flex flex-col gap-4 sm:mt-12 sm:gap-5">
-        <MarqueeRow moments={topMoments} direction="left" />
-        <MarqueeRow moments={bottomMoments} direction="right" />
+        <Reveal delay={80}>
+          <MarqueeRow moments={topMoments} direction="left" />
+        </Reveal>
+        <Reveal delay={160}>
+          <MarqueeRow moments={bottomMoments} direction="right" />
+        </Reveal>
       </div>
     </section>
   );

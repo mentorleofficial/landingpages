@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import LegalLayout from "@/components/LegalLayout";
 import Membership from "@/components/Membership";
 import FaqSection, { FaqContactFooter } from "@/components/FaqSection";
+import Reveal from "@/components/Reveal";
 import { createStubMetadata } from "@/components/StubPage";
 
 export const metadata: Metadata = createStubMetadata(
@@ -29,30 +30,32 @@ export default function PricingPage() {
   return (
     <LegalLayout>
       <section className="mx-auto max-w-[1200px] px-5 pt-14 pb-4 sm:px-8 sm:pt-20 lg:px-10">
-        <p className="text-[0.6875rem] font-medium tracking-[0.14em] text-muted uppercase">
-          Pricing
-        </p>
-        <h1 className="mt-3 max-w-[36rem] font-display text-5xl tracking-tight text-foreground sm:text-6xl">
-          Simple plans for serious growth
-        </h1>
-        <p className="mt-4 max-w-[40rem] text-[1.0625rem] leading-relaxed text-muted">
-          Start free to explore Mentors and community. Upgrade to Mentorle Plus
-          when you want more sessions, stronger discounts, and deeper support.
-        </p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <a
-            href="https://platform.mentorle.in/signup"
-            className="inline-flex h-11 items-center justify-center rounded-full bg-foreground px-6 text-[0.9375rem] font-medium text-white transition-colors hover:bg-neutral-800"
-          >
-            Join Free
-          </a>
-          <a
-            href="https://platform.mentorle.in/signup"
-            className="inline-flex h-11 items-center justify-center rounded-full border border-border bg-white px-6 text-[0.9375rem] font-medium text-foreground transition-colors hover:border-neutral-400"
-          >
-            Explore Mentorle Plus
-          </a>
-        </div>
+        <Reveal>
+          <p className="text-[0.6875rem] font-medium tracking-[0.14em] text-muted uppercase">
+            Pricing
+          </p>
+          <h1 className="mt-3 max-w-[36rem] font-display text-5xl tracking-tight text-foreground sm:text-6xl">
+            Simple plans for serious growth
+          </h1>
+          <p className="mt-4 max-w-[40rem] text-[1.0625rem] leading-relaxed text-muted">
+            Start free to explore Mentors and community. Upgrade to Mentorle Plus
+            when you want more sessions, stronger discounts, and deeper support.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a
+              href="https://platform.mentorle.in/signup"
+              className="inline-flex h-11 items-center justify-center rounded-full bg-foreground px-6 text-[0.9375rem] font-medium text-white transition-[background-color,transform] hover:bg-neutral-800 active:scale-[0.98]"
+            >
+              Join Free
+            </a>
+            <a
+              href="https://platform.mentorle.in/signup"
+              className="inline-flex h-11 items-center justify-center rounded-full border border-border bg-white px-6 text-[0.9375rem] font-medium text-foreground transition-[border-color,transform] hover:border-neutral-400 active:scale-[0.98]"
+            >
+              Explore Mentorle Plus
+            </a>
+          </div>
+        </Reveal>
       </section>
 
       <Membership />

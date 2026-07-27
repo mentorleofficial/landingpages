@@ -12,7 +12,7 @@ export default function Hero({ mentors, summary }: HeroProps) {
   return (
     <section aria-labelledby="hero-heading" className="relative flex-1">
       <div className="mx-auto grid max-w-[1200px] gap-10 px-5 pt-6 pb-12 sm:px-8 sm:pt-10 sm:pb-16 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-10 lg:pt-12 lg:pb-20">
-        <Reveal className="flex max-w-xl flex-col">
+        <Reveal className="flex max-w-xl flex-col" variant="fade-left">
           <h1
             id="hero-heading"
             className="font-display text-[2.75rem] leading-[1.06] tracking-tight text-foreground sm:text-[3.75rem] lg:text-[4.5rem]"
@@ -28,13 +28,13 @@ export default function Hero({ mentors, summary }: HeroProps) {
           <div className="mt-7 flex flex-col items-stretch gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-3.5">
             <a
               href="https://platform.mentorle.in/signup"
-              className="inline-flex h-12 items-center justify-center rounded-full bg-foreground px-7 text-[0.9375rem] font-medium text-white transition-colors hover:bg-neutral-800"
+              className="inline-flex h-12 items-center justify-center rounded-full bg-foreground px-7 text-[0.9375rem] font-medium text-white transition-[background-color,transform] hover:bg-neutral-800 active:scale-[0.98]"
             >
               Join Free
             </a>
             <Link
               href="/plus"
-              className="inline-flex h-12 items-center justify-center gap-1.5 rounded-full border border-foreground/20 bg-white px-6 text-[0.9375rem] font-medium text-foreground transition-colors hover:border-foreground/40 hover:bg-neutral-50"
+              className="inline-flex h-12 items-center justify-center gap-1.5 rounded-full border border-foreground/20 bg-white px-6 text-[0.9375rem] font-medium text-foreground transition-[border-color,background-color,transform] hover:border-foreground/40 hover:bg-neutral-50 active:scale-[0.98]"
             >
               <span aria-hidden="true">✦</span>
               Explore Plus
@@ -49,8 +49,8 @@ export default function Hero({ mentors, summary }: HeroProps) {
         </Reveal>
 
         <Reveal
-          delay={120}
-          variant="scale"
+          delay={140}
+          variant="fade-right"
           className="w-full min-w-0 lg:min-h-[34rem]"
         >
           <LiveMentorPanel mentors={mentors} />

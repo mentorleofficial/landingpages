@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import LegalLayout from "@/components/LegalLayout";
 import ContactForm from "@/components/ContactForm";
+import Reveal from "@/components/Reveal";
 import { createStubMetadata } from "@/components/StubPage";
 import { SOCIAL_LINKS } from "@/lib/social";
 
@@ -56,7 +57,7 @@ export default function ContactPage() {
   return (
     <LegalLayout>
       <div className="mx-auto w-full max-w-[1100px] px-5 py-14 sm:px-8 sm:py-20 lg:px-10">
-        <div className="max-w-[40rem]">
+        <Reveal className="max-w-[40rem]">
           <p className="text-[0.6875rem] font-medium tracking-[0.14em] text-muted uppercase">
             Contact
           </p>
@@ -67,14 +68,15 @@ export default function ContactPage() {
             Questions about mentorship, Mentorle Plus, university partnerships,
             or becoming a mentor? Send us a message — we&apos;re here to help.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
           <aside className="space-y-4">
-            {contactDetails.map((item) => (
-              <div
+            {contactDetails.map((item, index) => (
+              <Reveal
                 key={item.label}
-                className="rounded-2xl border border-border/70 bg-white p-5"
+                delay={index * 60}
+                className="hover-lift rounded-2xl border border-border/70 bg-white p-5"
               >
                 <p className="text-[0.75rem] font-medium tracking-[0.1em] text-muted uppercase">
                   {item.label}
@@ -91,9 +93,9 @@ export default function ContactPage() {
                     {item.value}
                   </p>
                 )}
-              </div>
+              </Reveal>
             ))}
-            <div className="rounded-2xl border border-border/70 bg-background p-5">
+            <Reveal delay={240} className="hover-lift rounded-2xl border border-border/70 bg-background p-5">
               <p className="font-display text-xl tracking-tight text-foreground">
                 Prefer community channels?
               </p>
@@ -125,10 +127,12 @@ export default function ContactPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
           </aside>
 
-          <ContactForm />
+          <Reveal delay={100} variant="fade-right">
+            <ContactForm />
+          </Reveal>
         </div>
       </div>
     </LegalLayout>

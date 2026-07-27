@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Reveal from "./Reveal";
 
 const offerings = [
   {
@@ -68,7 +69,7 @@ export default function WhatYouCanDoHere() {
       className="border-t border-border/60 bg-background"
     >
       <div className="mx-auto grid max-w-[1200px] gap-10 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.15fr)] lg:items-start lg:gap-14 lg:px-10 lg:py-24">
-        <header className="lg:sticky lg:top-28 lg:self-start">
+        <Reveal className="lg:sticky lg:top-28 lg:self-start">
           <p className="text-[0.6875rem] font-medium tracking-[0.14em] text-muted uppercase">
             What you can do here
           </p>
@@ -84,7 +85,7 @@ export default function WhatYouCanDoHere() {
             you&apos;re nervous about, the idea you can&apos;t validate, the
             decision you keep putting off.
           </p>
-        </header>
+        </Reveal>
 
         <ul className="relative">
           {offerings.map((item, index) => {
@@ -92,7 +93,7 @@ export default function WhatYouCanDoHere() {
             const isLast = index === lastIndex;
 
             const card = (
-              <article className="rounded-[1.35rem] border border-border/70 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.05)] transition-[box-shadow,transform] group-hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] sm:p-6 lg:p-7">
+              <article className="rounded-[1.35rem] border border-border/70 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.05)] transition-[box-shadow,transform] duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] sm:p-6 lg:p-7">
                 <div className="flex items-start justify-between gap-4">
                   <span className="font-display text-[1.25rem] leading-none tracking-tight text-muted/55 tabular-nums sm:text-[1.375rem]">
                     {number}
@@ -117,8 +118,10 @@ export default function WhatYouCanDoHere() {
               "group block outline-none focus-visible:ring-2 focus-visible:ring-foreground/20 focus-visible:ring-offset-2";
 
             return (
-              <li
+              <Reveal
                 key={item.title}
+                as="li"
+                delay={Math.min(index * 50, 200)}
                 className={`relative motion-reduce:h-auto motion-reduce:mb-4 ${
                   isLast ? "min-h-0 pb-2" : "h-[min(52vh,28rem)]"
                 }`}
@@ -137,7 +140,7 @@ export default function WhatYouCanDoHere() {
                     </Link>
                   )}
                 </div>
-              </li>
+              </Reveal>
             );
           })}
         </ul>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SOCIAL_LINKS } from "@/lib/social";
+import Reveal from "./Reveal";
 
 const exploreLinks = [
   { href: "/become-mentor", label: "Mentors" },
@@ -56,7 +57,7 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer className="border-t border-border/70 bg-background">
-      <div className="mx-auto max-w-[1200px] px-5 py-12 sm:px-8 sm:py-14 lg:px-10">
+      <Reveal className="mx-auto max-w-[1200px] px-5 py-12 sm:px-8 sm:py-14 lg:px-10">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr] lg:gap-12">
           <div>
             <Link href="/" className="inline-flex" aria-label="Mentorle home">
@@ -135,7 +136,7 @@ export default function Footer() {
             CIN: U85500PB2025OPC064679
           </p>
         </div>
-      </div>
+      </Reveal>
     </footer>
   );
 }

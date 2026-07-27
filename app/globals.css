@@ -85,13 +85,13 @@ body {
   --reveal-delay: 0ms;
   opacity: 0;
   transition:
-    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay);
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay);
   will-change: opacity, transform;
 }
 
 .reveal-fade-up {
-  transform: translateY(1.25rem);
+  transform: translateY(1.35rem);
 }
 
 .reveal-fade {
@@ -99,7 +99,15 @@ body {
 }
 
 .reveal-scale {
-  transform: scale(0.97);
+  transform: scale(0.96);
+}
+
+.reveal-fade-left {
+  transform: translateX(-1.15rem);
+}
+
+.reveal-fade-right {
+  transform: translateX(1.15rem);
 }
 
 .reveal.is-visible {
@@ -108,13 +116,28 @@ body {
 }
 
 .page-enter {
-  animation: page-enter 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: page-enter 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes page-enter {
   from {
     opacity: 0;
-    transform: translateY(0.6rem);
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.header-enter {
+  animation: header-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes header-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
   }
   to {
     opacity: 1;
@@ -130,14 +153,32 @@ body {
 }
 
 .hover-lift:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.07);
+}
+
+.soft-pulse {
+  animation: soft-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes soft-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.7;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track-left,
   .marquee-track-right,
-  .page-enter {
+  .page-enter,
+  .header-enter,
+  .soft-pulse {
     animation: none;
   }
 
@@ -145,6 +186,8 @@ body {
   .reveal-fade-up,
   .reveal-fade,
   .reveal-scale,
+  .reveal-fade-left,
+  .reveal-fade-right,
   .hover-lift,
   .hover-lift:hover {
     opacity: 1;

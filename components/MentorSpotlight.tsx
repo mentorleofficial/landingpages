@@ -1,4 +1,5 @@
 import { toSpotlightMentor, type Mentor } from "@/lib/mentors";
+import Reveal from "./Reveal";
 
 type MentorSpotlightProps = {
   mentors: Mentor[];
@@ -21,7 +22,7 @@ export default function MentorSpotlight({
       className="border-t border-border/60 bg-white"
     >
       <div className="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-8">
+        <Reveal className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-8">
           <div className="max-w-[40rem]">
             <p className="text-[0.6875rem] font-medium tracking-[0.14em] text-muted uppercase">
               Mentor spotlight
@@ -46,11 +47,11 @@ export default function MentorSpotlight({
             Browse all mentors
             <span aria-hidden="true">↗</span>
           </a>
-        </div>
+        </Reveal>
 
         {spotlight.length > 0 ? (
           <ul className="mt-10 grid grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
-            {spotlight.map((mentor) => {
+            {spotlight.map((mentor, index) => {
               const visibleTags = mentor.tags.slice(0, 3);
               const extraTags = mentor.tags.length - visibleTags.length;
               const experience =
@@ -58,7 +59,12 @@ export default function MentorSpotlight({
                 (mentor.stat.trim() ? mentor.stat : null);
 
               return (
-                <li key={mentor.id}>
+                <Reveal
+                  key={mentor.id}
+                  as="li"
+                  delay={(index % 3) * 80}
+                  variant="scale"
+                >
                   <article className="group relative aspect-[3/4] overflow-hidden rounded-[1.35rem] bg-neutral-900">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
@@ -130,7 +136,7 @@ export default function MentorSpotlight({
                       </div>
                     </div>
                   </article>
-                </li>
+                </Reveal>
               );
             })}
           </ul>

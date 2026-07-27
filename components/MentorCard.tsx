@@ -7,7 +7,7 @@ type MentorCardProps = {
 
 export default function MentorCard({ mentor }: MentorCardProps) {
   return (
-    <li className="flex items-center gap-3 rounded-[1.15rem] border border-border/70 bg-white px-3.5 py-3.5 shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-shadow hover:shadow-[0_4px_14px_rgba(0,0,0,0.05)] sm:gap-3.5 sm:px-4 sm:py-4">
+    <li className="hover-lift flex items-center gap-3 rounded-[1.15rem] border border-border/70 bg-white px-3.5 py-3.5 shadow-[0_1px_2px_rgba(0,0,0,0.03)] sm:gap-3.5 sm:px-4 sm:py-4">
       <div className="relative shrink-0">
         <MentorAvatar
           src={mentor.image}
@@ -16,7 +16,7 @@ export default function MentorCard({ mentor }: MentorCardProps) {
           className="size-12 rounded-full object-cover"
         />
         <span
-          className="absolute right-0 bottom-0 size-3 rounded-full border-2 border-white bg-online"
+          className="soft-pulse absolute right-0 bottom-0 size-3 rounded-full border-2 border-white bg-online"
           aria-hidden="true"
         />
         <span className="sr-only">Online</span>

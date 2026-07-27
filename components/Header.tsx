@@ -10,7 +10,7 @@ const navLinks = [
 
 export default function Header() {
   return (
-    <header className="relative z-20 w-full">
+    <header className="header-enter relative z-20 w-full">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-5 py-5 sm:px-8 lg:px-10">
         <Link
           href="/"

@@ -14,8 +14,8 @@ type RevealProps = {
   className?: string;
   as?: ElementType;
   delay?: number;
-  /** fade-up | fade | scale */
-  variant?: "fade-up" | "fade" | "scale";
+  /** fade-up | fade | scale | fade-left | fade-right */
+  variant?: "fade-up" | "fade" | "scale" | "fade-left" | "fade-right";
 };
 
 export default function Reveal({
