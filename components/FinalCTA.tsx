@@ -14,7 +14,7 @@ export default function FinalCTA() {
           </p>
           <h2
             id="start-heading"
-            className="mt-4 font-display text-[1.875rem] leading-[1.15] tracking-tight text-foreground sm:text-[2.35rem] md:text-[2.75rem]"
+            className="mt-4 font-display text-[2.25rem] leading-[1.12] tracking-tight text-foreground sm:text-[2.75rem] md:text-[3.25rem]"
           >
             One conversation can change your{" "}
             <em className="italic">direction</em>. Start with Mentorle.

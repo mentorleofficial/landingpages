@@ -71,12 +71,12 @@ export default function AboutPage() {
         >
           <div className="mx-auto max-w-[800px] px-5 py-16 text-center sm:px-8 sm:py-20 lg:py-24">
             <Reveal>
-              <p className="font-display text-[2.75rem] leading-none tracking-tight text-foreground sm:text-[3.5rem] md:text-[4rem]">
+              <p className="font-display text-[3.25rem] leading-none tracking-tight text-foreground sm:text-[4rem] md:text-[4.5rem]">
                 Mentorle
               </p>
               <h1
                 id="about-hero-heading"
-                className="mt-5 font-display text-[1.75rem] leading-[1.2] tracking-tight text-foreground sm:text-[2.25rem] md:text-[2.5rem]"
+                className="mt-5 font-display text-[2.15rem] leading-[1.15] tracking-tight text-foreground sm:text-[2.65rem] md:text-[3rem]"
               >
                 Mentorship infrastructure for India&apos;s{" "}
                 <em className="italic">next generation</em>.
@@ -129,7 +129,7 @@ export default function AboutPage() {
                   </p>
                   <h2
                     id="story-heading"
-                    className="mt-3 font-display text-[1.875rem] tracking-tight text-foreground sm:text-[2.25rem]"
+                    className="mt-3 font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
                   >
                     Started in Punjab. Growing with purpose.
                   </h2>
@@ -183,7 +183,7 @@ export default function AboutPage() {
               </p>
               <h2
                 id="mission-heading"
-                className="mt-5 font-display text-[2rem] leading-[1.15] tracking-tight text-foreground sm:text-[2.5rem] md:text-[2.875rem]"
+                className="mt-5 font-display text-[2.5rem] leading-[1.12] tracking-tight text-foreground sm:text-[3rem] md:text-[3.5rem]"
               >
                 Make the right mentorship available to everyone, not just those
                 who can{" "}
@@ -210,7 +210,7 @@ export default function AboutPage() {
               </p>
               <h2
                 id="how-heading"
-                className="mt-3 text-center font-display text-[1.875rem] tracking-tight text-foreground sm:text-[2.25rem]"
+                className="mt-3 text-center font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
               >
                 Free to explore. Plus to go deeper.
               </h2>
@@ -268,7 +268,7 @@ export default function AboutPage() {
               </p>
               <h2
                 id="values-heading"
-                className="mt-3 text-center font-display text-[1.875rem] tracking-tight text-foreground sm:text-[2.25rem]"
+                className="mt-3 text-center font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
               >
                 Principles we build by
               </h2>
@@ -308,7 +308,7 @@ export default function AboutPage() {
               </p>
               <h2
                 id="timeline-heading"
-                className="mt-3 text-center font-display text-[1.875rem] tracking-tight text-foreground sm:text-[2.25rem]"
+                className="mt-3 text-center font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
               >
                 A few years of deliberate building
               </h2>
@@ -351,7 +351,7 @@ export default function AboutPage() {
               </p>
               <h2
                 id="about-cta-heading"
-                className="mt-4 font-display text-[1.875rem] leading-[1.15] tracking-tight text-foreground sm:text-[2.35rem] md:text-[2.75rem]"
+                className="mt-4 font-display text-[2.25rem] leading-[1.12] tracking-tight text-foreground sm:text-[2.75rem] md:text-[3.25rem]"
               >
                 Want to be part of what we&apos;re{" "}
                 <em className="italic">building</em>?

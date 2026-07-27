@@ -115,7 +115,7 @@ export default function CommunityLife() {
           </p>
           <h2
             id="life-heading"
-            className="mt-3 font-display text-[2rem] tracking-tight text-foreground sm:text-[2.5rem] md:text-[2.75rem]"
+            className="mt-3 font-display text-[2.5rem] tracking-tight text-foreground sm:text-[3rem] md:text-[3.35rem]"
           >
             Real proof, not just promises.
           </h2>

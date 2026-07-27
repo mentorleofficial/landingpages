@@ -33,7 +33,7 @@ export default function FAQ() {
     <FaqSection
       id="faq"
       headingId="faq-heading"
-      title="Questions, answered."
+      title="Frequently Asked Questions"
       items={faqs}
       footer={
         <p>

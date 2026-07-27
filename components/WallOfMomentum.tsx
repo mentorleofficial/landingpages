@@ -15,7 +15,7 @@ export default function WallOfMomentum({ mentors }: WallOfMomentumProps) {
   return (
     <section
       aria-labelledby="momentum-heading"
-      className="border-t border-border/60 bg-background px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24"
+      className="border-t border-border/60 bg-background px-5 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-14"
     >
       <div className="mx-auto max-w-[1200px]">
         <Reveal className="text-center">
@@ -24,7 +24,7 @@ export default function WallOfMomentum({ mentors }: WallOfMomentumProps) {
           </p>
           <h2
             id="momentum-heading"
-            className="mx-auto mt-3 max-w-[28rem] font-display text-[1.875rem] leading-[1.15] tracking-tight text-foreground sm:text-[2.25rem] md:text-[2.5rem]"
+            className="mx-auto mt-3 max-w-[28rem] font-display text-[2.25rem] leading-[1.12] tracking-tight text-foreground sm:text-[2.75rem] md:text-[3.15rem]"
           >
             Real mentors. Real experience. Real direction.
           </h2>

@@ -13,16 +13,11 @@ export default function Hero({ mentors, summary }: HeroProps) {
     <section aria-labelledby="hero-heading" className="relative flex-1">
       <div className="mx-auto grid max-w-[1200px] gap-10 px-5 pt-6 pb-12 sm:px-8 sm:pt-10 sm:pb-16 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-10 lg:pt-12 lg:pb-20">
         <Reveal className="flex max-w-xl flex-col">
-          <p className="font-display text-[2.5rem] leading-none tracking-tight text-foreground sm:text-[3rem]">
-            Mentorle
-          </p>
-
           <h1
             id="hero-heading"
-            className="mt-5 font-display text-[2rem] leading-[1.1] tracking-tight text-foreground sm:text-[2.75rem] lg:text-[3.25rem]"
+            className="font-display text-[2.75rem] leading-[1.06] tracking-tight text-foreground sm:text-[3.75rem] lg:text-[4.5rem]"
           >
-            Talk to people who&apos;ve already{" "}
-            <em className="italic">done it</em>.
+            Talk to people who&apos;ve already done it.
           </h1>
 
           <p className="mt-4 max-w-md text-[1rem] leading-relaxed text-muted sm:mt-5 sm:text-[1.125rem]">

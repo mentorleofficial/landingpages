@@ -35,7 +35,7 @@ export default async function Home() {
         />
         <Membership />
         <CommunityLife />
-        <CommunityEvents mentors={allMentors} summary={summary} />
+        {/* <CommunityEvents mentors={allMentors} summary={summary} /> */}
         <WallOfMomentum mentors={allMentors} />
         <FAQ />
         <FinalCTA />

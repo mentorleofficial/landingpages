@@ -34,7 +34,7 @@ export default function StubPage({
     <div className="bg-grid flex min-h-full flex-1 flex-col">
       <Header />
       <main className="mx-auto flex w-full max-w-[720px] flex-1 flex-col px-5 py-16 sm:px-8 lg:px-10">
-        <h1 className="font-display text-4xl tracking-tight text-foreground sm:text-5xl">
+        <h1 className="font-display text-5xl tracking-tight text-foreground sm:text-6xl">
           {title}
         </h1>
         <p className="mt-4 text-lg leading-relaxed text-muted">{description}</p>

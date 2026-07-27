@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import MentorAvatar from "./MentorAvatar";
 import type { MentorTestimonial } from "@/lib/mentors";
 
 type WallOfMomentumCarouselProps = {
   testimonials: MentorTestimonial[];
 };
+
+const AUTO_SCROLL_MS = 4200;
+const LOOP_SETS = 3;
 
 function Stars() {
   return (
@@ -50,65 +53,165 @@ function VerifiedIcon() {
 export default function WallOfMomentumCarousel({
   testimonials,
 }: WallOfMomentumCarouselProps) {
+  const count = testimonials.length;
+  const canLoop = count > 1;
+
+  const looped = useMemo(() => {
+    if (!canLoop) return testimonials.map((item, index) => ({ item, index }));
+    return Array.from({ length: LOOP_SETS }, (_, set) =>
+      testimonials.map((item, index) => ({
+        item,
+        index,
+        key: `${set}-${item.id}`,
+      })),
+    ).flat();
+  }, [testimonials, canLoop]);
+
+  const middleStart = canLoop ? count : 0;
   const scrollerRef = useRef<HTMLUListElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeSlot, setActiveSlot] = useState(middleStart);
+  const activeSlotRef = useRef(middleStart);
+  const [paused, setPaused] = useState(false);
+  const jumpingRef = useRef(false);
+
+  useEffect(() => {
+    activeSlotRef.current = activeSlot;
+  }, [activeSlot]);
+
+  const getCards = useCallback(() => {
+    const node = scrollerRef.current;
+    if (!node) return [];
+    return [...node.querySelectorAll<HTMLElement>("[data-momentum-card]")];
+  }, []);
+
+  const scrollToSlot = useCallback(
+    (slot: number, behavior: ScrollBehavior = "smooth") => {
+      const node = scrollerRef.current;
+      const card = getCards()[slot];
+      if (!node || !card) return;
+
+      const left =
+        card.offsetLeft - (node.clientWidth - card.offsetWidth) / 2;
+      node.scrollTo({ left: Math.max(0, left), behavior });
+    },
+    [getCards],
+  );
+
+  const normalizeLoop = useCallback(() => {
+    if (!canLoop || jumpingRef.current) return;
+
+    const node = scrollerRef.current;
+    if (!node) return;
+
+    const cards = getCards();
+    if (cards.length === 0) return;
+
+    const mid = node.scrollLeft + node.clientWidth / 2;
+    let best = 0;
+    let bestDist = Number.POSITIVE_INFINITY;
+
+    cards.forEach((card, index) => {
+      const center = card.offsetLeft + card.offsetWidth / 2;
+      const dist = Math.abs(center - mid);
+      if (dist < bestDist) {
+        bestDist = dist;
+        best = index;
+      }
+    });
+
+    setActiveSlot(best);
+
+    // Jump from edge copies into the middle set for seamless infinite scroll
+    if (best < count || best >= count * 2) {
+      const target = middleStart + (best % count);
+      jumpingRef.current = true;
+      scrollToSlot(target, "auto");
+      setActiveSlot(target);
+      activeSlotRef.current = target;
+      requestAnimationFrame(() => {
+        jumpingRef.current = false;
+      });
+    }
+  }, [canLoop, count, getCards, middleStart, scrollToSlot]);
+
+  // Start centered on the middle set
+  useEffect(() => {
+    if (!canLoop) {
+      scrollToSlot(0, "auto");
+      return;
+    }
+    scrollToSlot(middleStart, "auto");
+    setActiveSlot(middleStart);
+    activeSlotRef.current = middleStart;
+  }, [canLoop, middleStart, scrollToSlot, count]);
 
   useEffect(() => {
     const node = scrollerRef.current;
     if (!node) return;
 
-    const updateActive = () => {
-      const cards = [
-        ...node.querySelectorAll<HTMLElement>("[data-momentum-card]"),
-      ];
-      if (cards.length === 0) return;
-
-      const mid = node.scrollLeft + node.clientWidth / 2;
-      let best = 0;
-      let bestDist = Number.POSITIVE_INFINITY;
-
-      cards.forEach((card, index) => {
-        const center = card.offsetLeft + card.offsetWidth / 2;
-        const dist = Math.abs(center - mid);
-        if (dist < bestDist) {
-          bestDist = dist;
-          best = index;
-        }
-      });
-
-      setActiveIndex(best);
+    const onScroll = () => {
+      if (jumpingRef.current) return;
+      normalizeLoop();
     };
 
-    updateActive();
-    node.addEventListener("scroll", updateActive, { passive: true });
-    window.addEventListener("resize", updateActive);
+    node.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
     return () => {
-      node.removeEventListener("scroll", updateActive);
-      window.removeEventListener("resize", updateActive);
+      node.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
     };
-  }, [testimonials.length]);
+  }, [normalizeLoop]);
 
   function scrollByCard(direction: -1 | 1) {
-    const node = scrollerRef.current;
-    if (!node) return;
-    const card = node.querySelector<HTMLElement>("[data-momentum-card]");
-    const amount = card ? card.offsetWidth + 20 : 360;
-    node.scrollBy({ left: direction * amount, behavior: "smooth" });
+    const next = activeSlotRef.current + direction;
+    if (!canLoop) {
+      const clamped = Math.max(0, Math.min(count - 1, next));
+      scrollToSlot(clamped);
+      return;
+    }
+    scrollToSlot(next);
   }
 
+  useEffect(() => {
+    if (!canLoop) return;
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (reduceMotion || paused) return;
+
+    const id = window.setInterval(() => {
+      scrollToSlot(activeSlotRef.current + 1);
+    }, AUTO_SCROLL_MS);
+
+    return () => window.clearInterval(id);
+  }, [canLoop, paused, scrollToSlot]);
+
   return (
-    <div className="relative mt-10 sm:mt-12">
+    <div
+      className="relative mt-6 sm:mt-8"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+          setPaused(false);
+        }
+      }}
+    >
       <ul
         ref={scrollerRef}
-        className="flex snap-x snap-mandatory items-center gap-4 overflow-x-auto px-[8%] pb-4 sm:gap-5 sm:px-[12%] lg:px-[16%] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x snap-mandatory items-center gap-3 overflow-x-auto px-[4%] pb-2 sm:gap-4 sm:px-[8%] lg:px-[12%] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         aria-label="Mentor stories"
+        aria-live="off"
       >
-        {testimonials.map((item, index) => {
-          const isActive = index === activeIndex;
+        {looped.map((entry, slot) => {
+          const item = entry.item;
+          const isActive = slot === activeSlot;
 
           return (
             <li
-              key={item.id}
+              key={"key" in entry ? entry.key : item.id}
               data-momentum-card
               className={`w-[min(100%,20rem)] shrink-0 snap-center transition-[transform,opacity] duration-300 ease-out sm:w-[min(100%,30rem)] lg:w-[36rem] ${
                 isActive
@@ -117,7 +220,7 @@ export default function WallOfMomentumCarousel({
               }`}
             >
               <article
-                className={`relative flex min-h-[17rem] overflow-hidden rounded-[1.5rem] border bg-white sm:min-h-[20rem] ${
+                className={`relative flex min-h-[16rem] overflow-hidden rounded-[1.5rem] border bg-white sm:min-h-[18.5rem] ${
                   isActive
                     ? "border-border shadow-[0_16px_40px_rgba(0,0,0,0.08)]"
                     : "border-border/60 shadow-[0_4px_16px_rgba(0,0,0,0.04)]"
@@ -128,7 +231,7 @@ export default function WallOfMomentumCarousel({
                   aria-hidden="true"
                 />
 
-                <div className="flex min-w-0 flex-1 flex-col justify-between gap-5 p-5 pl-5 sm:p-6 sm:pl-7">
+                <div className="flex min-w-0 flex-1 flex-col justify-between gap-4 p-5 pl-5 sm:gap-5 sm:p-6 sm:pl-7">
                   <div>
                     <div className="flex items-center gap-3">
                       <MentorAvatar
@@ -148,7 +251,7 @@ export default function WallOfMomentumCarousel({
                       </div>
                     </div>
 
-                    <div className="mt-4">
+                    <div className="mt-3 sm:mt-4">
                       <Stars />
                     </div>
 
@@ -181,8 +284,8 @@ export default function WallOfMomentumCarousel({
         })}
       </ul>
 
-      {testimonials.length > 1 ? (
-        <div className="mt-4 flex items-center justify-center gap-3">
+      {canLoop ? (
+        <div className="mt-3 flex items-center justify-center gap-3 sm:mt-4">
           <button
             type="button"
             onClick={() => scrollByCard(-1)}

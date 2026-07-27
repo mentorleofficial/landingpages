@@ -29,9 +29,9 @@ export default function MentorSpotlight({
             </p>
             <h2
               id="spotlight-heading"
-              className="mt-3 font-display text-[1.875rem] leading-[1.15] tracking-tight text-foreground sm:text-[2.25rem] md:text-[2.5rem]"
+              className="mt-3 font-display text-[2.25rem] leading-[1.12] tracking-tight text-foreground sm:text-[2.75rem] md:text-[3.15rem]"
             >
-              Real mentors who&apos;ve already done it.
+              Real mentors <br />who&apos;ve already done it.
             </h2>
             <p className="mt-4 text-[1rem] leading-relaxed text-muted sm:text-[1.0625rem]">
               Not influencers. Not course sellers. People who&apos;ve built,

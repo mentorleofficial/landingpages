@@ -112,12 +112,12 @@ export default function PlusPage() {
         >
           <div className="mx-auto max-w-[800px] px-5 py-16 text-center sm:px-8 sm:py-20 lg:py-24">
             <Reveal>
-              <p className="font-display text-[2.75rem] leading-none tracking-tight text-foreground sm:text-[3.5rem] md:text-[4rem]">
+              <p className="font-display text-[3.25rem] leading-none tracking-tight text-foreground sm:text-[4rem] md:text-[4.5rem]">
                 Plus
               </p>
               <h1
                 id="plus-hero-heading"
-                className="mt-5 font-display text-[1.75rem] leading-[1.2] tracking-tight text-foreground sm:text-[2.25rem] md:text-[2.5rem]"
+                className="mt-5 font-display text-[2.15rem] leading-[1.15] tracking-tight text-foreground sm:text-[2.65rem] md:text-[3rem]"
               >
                 Go deeper with mentorship that{" "}
                 <em className="italic">moves you forward</em>.
@@ -161,7 +161,7 @@ export default function PlusPage() {
               </p>
               <h2
                 id="plus-benefits-heading"
-                className="mt-3 text-center font-display text-[1.875rem] tracking-tight text-foreground sm:text-[2.25rem]"
+                className="mt-3 text-center font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
               >
                 Everything you need to grow faster
               </h2>
@@ -205,7 +205,7 @@ export default function PlusPage() {
               </p>
               <h2
                 id="plus-for-heading"
-                className="mt-3 text-center font-display text-[1.875rem] tracking-tight text-foreground sm:text-[2.25rem]"
+                className="mt-3 text-center font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
               >
                 Built for serious movers
               </h2>
@@ -240,7 +240,7 @@ export default function PlusPage() {
               </p>
               <h2
                 id="plus-steps-heading"
-                className="mt-3 text-center font-display text-[1.875rem] tracking-tight text-foreground sm:text-[2.25rem]"
+                className="mt-3 text-center font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
               >
                 Three steps to deeper mentorship
               </h2>
@@ -284,7 +284,7 @@ export default function PlusPage() {
               </p>
               <h2
                 id="plus-compare-heading"
-                className="mt-3 text-center font-display text-[1.875rem] tracking-tight text-foreground sm:text-[2.25rem]"
+                className="mt-3 text-center font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
               >
                 Start free. Upgrade when you&apos;re ready.
               </h2>
@@ -353,7 +353,7 @@ export default function PlusPage() {
               </p>
               <h2
                 id="plus-cta-heading"
-                className="mt-4 font-display text-[1.875rem] leading-[1.15] tracking-tight text-foreground sm:text-[2.35rem] md:text-[2.75rem]"
+                className="mt-4 font-display text-[2.25rem] leading-[1.12] tracking-tight text-foreground sm:text-[2.75rem] md:text-[3.25rem]"
               >
                 Ready for deeper{" "}
                 <em className="italic">mentorship</em>?

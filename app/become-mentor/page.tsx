@@ -106,7 +106,7 @@ export default function BecomeMentorPage() {
             </p>
             <h1
               id="become-hero-heading"
-              className="mt-4 font-display text-[2.25rem] leading-[1.12] tracking-tight text-foreground sm:text-[3rem] md:text-[3.25rem]"
+              className="mt-4 font-display text-[2.75rem] leading-[1.1] tracking-tight text-foreground sm:text-[3.5rem] md:text-[3.85rem]"
             >
               Make a Difference – Become a Mentor
             </h1>
@@ -131,7 +131,7 @@ export default function BecomeMentorPage() {
           <div className="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
             <h2
               id="why-mentor-heading"
-              className="text-center font-display text-[1.875rem] tracking-tight text-foreground sm:text-[2.25rem]"
+              className="text-center font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
             >
               Why Be a Mentor?
             </h2>
@@ -164,7 +164,7 @@ export default function BecomeMentorPage() {
           <div className="mx-auto max-w-[720px] px-5 py-16 sm:px-8 sm:py-20">
             <h2
               id="eligibility-heading"
-              className="text-center font-display text-[1.875rem] tracking-tight text-foreground sm:text-[2.25rem]"
+              className="text-center font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
             >
               Eligibility Criteria
             </h2>
@@ -204,7 +204,7 @@ export default function BecomeMentorPage() {
           <div className="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
             <h2
               id="process-heading"
-              className="text-center font-display text-[1.875rem] tracking-tight text-foreground sm:text-[2.25rem]"
+              className="text-center font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
             >
               Application Process
             </h2>
@@ -240,7 +240,7 @@ export default function BecomeMentorPage() {
           <div className="mx-auto max-w-[720px] px-5 py-16 text-center sm:px-8 sm:py-20 lg:py-24">
             <h2
               id="apply-heading"
-              className="font-display text-[1.875rem] tracking-tight text-foreground sm:text-[2.25rem]"
+              className="font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
             >
               Ready to Make an Impact?
             </h2>

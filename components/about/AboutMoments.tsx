@@ -33,7 +33,7 @@ export default function AboutMoments() {
           </p>
           <h2
             id="about-moments-heading"
-            className="mt-3 text-center font-display text-[1.875rem] tracking-tight text-foreground sm:text-[2.25rem]"
+            className="mt-3 text-center font-display text-[2.25rem] tracking-tight text-foreground sm:text-[2.75rem]"
           >
             Mentorship in the room — not just on a screen.
           </h2>

@@ -74,7 +74,7 @@ export default function WhatYouCanDoHere() {
           </p>
           <h2
             id="offerings-heading"
-            className="mt-3 max-w-[22rem] font-display text-[1.875rem] leading-[1.15] tracking-tight text-foreground sm:text-[2.25rem] md:text-[2.5rem]"
+            className="mt-3 max-w-[22rem] font-display text-[2.25rem] leading-[1.12] tracking-tight text-foreground sm:text-[2.75rem] md:text-[3.15rem]"
           >
             Practical support, not abstract{" "}
             <em className="italic">features</em>.

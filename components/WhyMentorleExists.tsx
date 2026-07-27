@@ -23,7 +23,7 @@ export default function WhyMentorleExists() {
 
           <h2
             id="why-mentorle-heading"
-            className="mt-5 font-display text-[2rem] leading-[1.15] tracking-tight text-foreground sm:text-[2.5rem] md:text-[2.875rem]"
+            className="mt-5 font-display text-[2.5rem] leading-[1.12] tracking-tight text-foreground sm:text-[3rem] md:text-[3.5rem]"
           >
             People don&apos;t need more content.
             <br className="hidden sm:block" />{" "}

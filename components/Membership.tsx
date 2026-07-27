@@ -53,7 +53,7 @@ export default function Membership() {
         </p>
         <h2
           id="membership-heading"
-          className="mt-3 max-w-[36rem] font-display text-[1.875rem] leading-[1.15] tracking-tight text-foreground sm:text-[2.25rem] md:text-[2.5rem]"
+          className="mt-3 max-w-[36rem] font-display text-[2.25rem] leading-[1.12] tracking-tight text-foreground sm:text-[2.75rem] md:text-[3.15rem]"
         >
           Start free. Go deeper with{" "}
           <em className="italic">Mentorle Plus</em>.

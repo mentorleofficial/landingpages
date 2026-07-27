@@ -49,7 +49,7 @@ export default function CommunityEvents({
               </p>
               <h2
                 id="community-heading"
-                className="mt-3 max-w-[22rem] font-display text-[1.875rem] leading-[1.15] tracking-tight text-foreground sm:text-[2.25rem] md:text-[2.5rem]"
+                className="mt-3 max-w-[22rem] font-display text-[2.25rem] leading-[1.12] tracking-tight text-foreground sm:text-[2.75rem] md:text-[3.15rem]"
               >
                 Built on conversations with real mentors.
               </h2>

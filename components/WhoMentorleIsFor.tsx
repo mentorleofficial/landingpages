@@ -160,7 +160,7 @@ export default function WhoMentorleIsFor() {
         </p>
         <h2
           id="who-for-heading"
-          className="mt-3 max-w-[34rem] font-display text-[1.875rem] leading-[1.15] tracking-tight text-foreground sm:text-[2.25rem] md:text-[2.5rem]"
+          className="mt-3 max-w-[34rem] font-display text-[2.25rem] leading-[1.12] tracking-tight text-foreground sm:text-[2.75rem] md:text-[3.15rem]"
         >
           Whoever you are, if you&apos;re serious about moving forward.
         </h2>
